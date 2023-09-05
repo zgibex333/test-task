@@ -1,0 +1,12 @@
+1. Add todo
+ - Content length 
+ - Duplicate todo 
+ - Buttons State 
+2. Remove todo 
+ - Content length
+ - Exists on page 
+3. Remove list 
+4. Input Length 
+5. Error Page
+6. Error Boundary Page 
+7. Add list 
