@@ -1,8 +1,10 @@
+import { InputHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
-const Input = () => {
-  return (
-    <input>Input</input>
-  )
-}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-export default Input
+const Input: React.FC<InputProps> = ({ className, ...props }) => {
+  return <input className={twMerge("", className)} {...props} />;
+};
+
+export default Input;
