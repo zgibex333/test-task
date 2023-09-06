@@ -1,3 +1,5 @@
+import { FiEdit3 } from "react-icons/fi";
+import { BiTrashAlt } from "react-icons/bi";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { openModal, setCurrentTodo } from "../store/modalSlice/modalSlice";
 import { removeTodo, updateTodo } from "../store/todoSlice/todosSlice";
@@ -38,14 +40,16 @@ const TodoItem: React.FC<TodoItemProps> = ({
           checked={checked}
           onChange={onCheckedChange}
         />
-        <span>{title}</span>
+        <span className="break-all">{title}</span>
       </div>
       <div className="flex gap-1">
         <Button className="bg-neutral-800 px-3 py-1" onClick={onEditOpen}>
-          Edit
+          <span className="hidden md:inline">Edit</span>
+          <FiEdit3 className="inline-block md:hidden" />
         </Button>
         <Button className="bg-neutral-800 px-3 py-1" onClick={onRemove}>
-          Remove
+          <span className="hidden md:inline">Remove</span>
+          <BiTrashAlt className="inline-block md:hidden" />
         </Button>
       </div>
     </li>

@@ -43,13 +43,13 @@ const EditForm: React.FC<EditFormProps> = ({ onSave, onClose }) => {
 
   return (
     <>
-      <section className="flex flex-col gap-8 w-[50vw] h-[50vh] items-center justify-center bg-white rounded-lg">
+      <section className="flex flex-col gap-8 w-[70vw] lg:w-[50vw] h-[70vh] lg:h-[50vh] items-center justify-center bg-white rounded-lg">
         <h3 className="text-3xl flex gap-1 items-center">
           <span>Editing Task</span>
           <FiEdit3 />
         </h3>
         <Input
-          className="border-2 border-neutral-800 w-[50%]"
+          className="border-2 border-neutral-800 w-[75%] lg:w-[50%]"
           value={inputValue}
           onChange={onChangeInput}
         />
