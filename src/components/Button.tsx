@@ -7,7 +7,7 @@ const Button: React.FC<ButtonProps> = ({ className, children, ...props }) => {
   return (
     <button
       className={twMerge(
-        "w-fit cursor-pointer hover:opacity-70 uppercase text-white",
+        "w-fit cursor-pointer hover:opacity-70 uppercase text-white disabled:opacity-70 disabled:cursor-auto",
         className
       )}
       {...props}
