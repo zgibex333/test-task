@@ -31,5 +31,3 @@ export const { openModal, closeModal, setCurrentTodo } = modalSlice.actions;
 
 export const selectIsModalOpen = (state: RootState) => state.modal.isOpen;
 export const selectCurrentTodoId = (state: RootState) => state.modal.currentTodoId;
-
-export default modalSlice.reducer;

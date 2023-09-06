@@ -1,19 +1,18 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import useDebounce from "../hooks/useDebounce";
 import { addTodo } from "../store/todoSlice/todosSlice";
 import Button from "./Button";
 import Input from "./Input";
 import "react-toastify/dist/ReactToastify.css";
+import { ERR_MSG } from "../utils/constants";
 
-const MAX_LENGTH = 50;
-const ERR_MSG = `Max.length is ${MAX_LENGTH} symbols.`;
 const Header = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState<string>("");
   const debouncedInputValue = useDebounce(inputValue, 1000);
-  const canSubmitTodo = inputValue.length <= 50 && inputValue.length;
+  const canSubmitTodo = !!(inputValue.length <= 50 && inputValue.length);
 
   useEffect(() => {
     if (debouncedInputValue.length > 50) toast.warn(ERR_MSG);
@@ -54,11 +53,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <ToastContainer
-        position="bottom-center"
-        hideProgressBar
-        autoClose={3000}
-      />
     </>
   );
 };
