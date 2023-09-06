@@ -1,48 +1,53 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppSelector } from "../hooks/useAppSelector";
-import { selectIsModalOpen } from "../store/modalSlice/modalSlice";
+import {
+  closeModal,
+  selectIsModalOpen,
+  setIsClosing,
+  setIsOpening,
+} from "../store/modalSlice/modalSlice";
 import { twMerge } from "tailwind-merge";
+import { useDispatch } from "react-redux";
 
 interface ModalProps {
   children: React.ReactNode;
-  closeModal: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, closeModal }) => {
+const Modal: React.FC<ModalProps> = ({ children }) => {
   const isOpen = useAppSelector(selectIsModalOpen);
-  const [isOpening, setIsOpening] = useState<boolean>(false);
-  // FIX IT: process of clossing can be moved to store   
-  const [isClosing, setIsClosing] = useState<boolean>(false);
+  const { isOpening, isClosing } = useAppSelector((state) => state.modal);
+  const dispatch = useDispatch();
 
   const onCloseModal = () => {
-    setIsOpening(false);
-    setIsClosing(true);
+    dispatch(setIsOpening(false));
+    dispatch(setIsClosing(true));
   };
 
   useEffect(() => {
     let id: ReturnType<typeof setTimeout>;
     if (isOpen) {
       id = setTimeout(() => {
-        setIsOpening(true);
+        dispatch(setIsOpening(true));
+        dispatch(setIsClosing(false));
       }, 250);
     }
     return () => {
       clearTimeout(id);
     };
-  }, [isOpen]);
+  }, [isOpen, dispatch]);
 
   useEffect(() => {
     let id: ReturnType<typeof setTimeout>;
     if (isClosing) {
       id = setTimeout(() => {
-        closeModal();
-        setIsClosing(false);
+        dispatch(closeModal());
+        dispatch(setIsClosing(false));
       }, 250);
     }
     return () => {
       clearTimeout(id);
     };
-  }, [isClosing, closeModal]);
+  }, [isClosing, dispatch]);
 
   return (
     <>

@@ -3,11 +3,15 @@ import { RootState } from "../store";
 
 interface ModalState {
   isOpen: boolean;
+  isOpening: boolean;
+  isClosing: boolean;
   currentTodoId: string | undefined;
 }
 
 const initialState: ModalState = {
   isOpen: false,
+  isOpening: false,
+  isClosing: false,
   currentTodoId: undefined,
 };
 
@@ -18,6 +22,12 @@ export const modalSlice = createSlice({
     openModal: (state) => {
       state.isOpen = true;
     },
+    setIsOpening: (state, action: PayloadAction<boolean>) => {
+      state.isOpening = action.payload;
+    },
+    setIsClosing: (state, action: PayloadAction<boolean>) => {
+      state.isClosing = action.payload;
+    },
     closeModal: (state) => {
       state.isOpen = false;
     },
@@ -27,7 +37,8 @@ export const modalSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal, setCurrentTodo } = modalSlice.actions;
+export const { openModal, closeModal, setCurrentTodo, setIsClosing, setIsOpening } = modalSlice.actions;
 
 export const selectIsModalOpen = (state: RootState) => state.modal.isOpen;
-export const selectCurrentTodoId = (state: RootState) => state.modal.currentTodoId;
+export const selectCurrentTodoId = (state: RootState) =>
+  state.modal.currentTodoId;
