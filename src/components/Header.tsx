@@ -13,7 +13,7 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState<string>("");
   const debouncedInputValue = useDebounce(inputValue, 1000);
-  const canSubmitTodo = inputValue.length <= 50;
+  const canSubmitTodo = inputValue.length <= 50 && inputValue.length;
 
   useEffect(() => {
     if (debouncedInputValue.length > 50) toast.warn(ERR_MSG);
