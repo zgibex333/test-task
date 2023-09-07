@@ -1,3 +1,9 @@
+todo: LocalStorage
+
+tests: qwe
+
+ErrorBoundary 
+
 1. Add todo
  - Content length 
  - Duplicate todo 
