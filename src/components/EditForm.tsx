@@ -52,12 +52,14 @@ const EditForm: React.FC<EditFormProps> = ({ onSave, onClose }) => {
           className="border-2 border-neutral-800 w-[75%] lg:w-[50%]"
           value={inputValue}
           onChange={onChangeInput}
+          data-testid="edit-popup-input"
         />
         <div className="flex gap-1">
           <Button
             className="bg-neutral-800 px-3 py-2"
             onClick={onSaveChanges}
             disabled={!canSubmitTodo}
+            data-testid="save-popup-btn"
           >
             Save
           </Button>

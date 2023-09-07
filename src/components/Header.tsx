@@ -42,11 +42,13 @@ const Header = () => {
               type="text"
               value={inputValue}
               onChange={onInputChange}
+              data-testid="header-input"
             />
             <Button
               className="text bg-cyan-500 px-3 py-2"
               onClick={onAddTodo}
               disabled={!canSubmitTodo}
+              data-testid="add-todo-header-btn"
             >
               Add A New Task
             </Button>

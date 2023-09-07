@@ -33,7 +33,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
   };
 
   return (
-    <li className="flex gap-3 items-center">
+    <li className="flex gap-3 items-center" data-testid="todo-item">
       <div className="flex gap-1 items-center flex-1">
         <Checkbox
           className="text-3xl"
@@ -43,11 +43,19 @@ const TodoItem: React.FC<TodoItemProps> = ({
         <span className="break-all">{title}</span>
       </div>
       <div className="flex gap-1">
-        <Button className="bg-neutral-800 px-3 py-1" onClick={onEditOpen}>
+        <Button
+          className="bg-neutral-800 px-3 py-1"
+          onClick={onEditOpen}
+          data-testid="edit-item"
+        >
           <span className="hidden md:inline">Edit</span>
           <FiEdit3 className="inline-block md:hidden" />
         </Button>
-        <Button className="bg-neutral-800 px-3 py-1" onClick={onRemove}>
+        <Button
+          className="bg-neutral-800 px-3 py-1"
+          onClick={onRemove}
+          data-testid="remove-item"
+        >
           <span className="hidden md:inline">Remove</span>
           <BiTrashAlt className="inline-block md:hidden" />
         </Button>
